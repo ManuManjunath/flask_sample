@@ -1,8 +1,13 @@
+import psycopg2
 from flask import Flask, request
 from flask_restful import Resource, Api, reqparse
 
 app = Flask(__name__)
 api = Api(app)
+
+db = 'postgresql://manu_Sandbox:ubyICPW2lRRInYH@pgclx20540:5432/manu_sandbox'
+conn = psycopg2.connect(db)
+cursor = conn.cursor()
 
 # Start with an empty list of items
 items = []
@@ -77,5 +82,5 @@ class ItemList(Resource):
 api.add_resource(Item, "/item/<string:name>")  # http://127.0.0.1:8000/item/<name>
 api.add_resource(ItemList, "/items")  # http://127.0.0.1:8000/items
 
-# Run on port and enable debug mode to view more details during run
+# Run on port 8000 and enable debug mode to view more details during run
 app.run(port=8000, debug=True)
