@@ -5,7 +5,7 @@ from flask_restful import Resource, Api, reqparse
 app = Flask(__name__)
 api = Api(app)
 
-db = 'postgresql://manu_Sandbox:ubyICPW2lRRInYH@pgclx20540:5432/manu_sandbox'
+db = 'postgresql://manu_Sandbox:<pwd>@pgclx20540:5432/manu_sandbox'
 conn = psycopg2.connect(db)
 cursor = conn.cursor()
 
